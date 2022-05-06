@@ -1,0 +1,27 @@
+<CalcActionSelector>
+	Label:
+		text: 'Sum'
+	CheckBox:
+		on_active: root.actions_click(self, self.active, 'sum')
+	Label:
+		text: 'Sub'
+	CheckBox:
+		on_active: root.actions_click(self, self.active, 'sub')
+	Label:
+		text: 'Mul'
+	CheckBox:
+		on_active: root.actions_click(self, self.active, 'mul')
+	Label:
+		text: 'Div'
+	CheckBox:
+		on_active: root.actions_click(self, self.active, 'div')
+
+<RectActionSelector>
+	Label:
+		text: 'Per'
+	CheckBox:
+		on_active: root.actions_click(self, self.active, 'per')
+	Label:
+		text: 'Sqr'
+	CheckBox:
+		on_active: root.actions_click(self, self.active, 'sqr')

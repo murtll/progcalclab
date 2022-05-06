@@ -1,0 +1,98 @@
+<Button>
+	background_color: (0.1, 0.1, 0.2, 1)
+	foreground_normal: ''
+	font_size: 24
+
+<TextInput>
+	background_color: (0.07, 0.1, 0.2, 1)
+	foreground_color: (1, 1, 1, 1)
+	font_size: 24
+	padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+	halign: 'center'
+	valign: 'center'
+
+<Label>
+	halign: 'center'
+	valign: 'center'
+	font_size: 18
+
+<MainLayout>
+	canvas.before:
+		Color:
+			rgba: (0.05, 0.07, 0.1, 1)
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+	BoxLayout:
+		orientation: 'horizontal'
+		size: root.width, root.height
+		
+		Label:
+			id: answer
+			font_size: 32
+		
+		BoxLayout:
+			orientation: 'vertical'
+			spacing: 10
+			BoxLayout:
+				padding: 10
+				orientation: 'horizontal'
+				Label: 
+					text: 'a:'
+				TextInput:
+					id: a
+					multiline: False
+					on_text: root.validate_input()
+
+			BoxLayout:
+				padding: 10
+				orientation: 'horizontal'
+				Label: 
+					text: 'b:'
+				TextInput:
+					id: b
+					multiline: False
+					on_text: root.validate_input()
+					
+
+			BoxLayout:
+				orientation: 'horizontal'
+				padding: [10, 10, 20, 10]
+
+				CheckBox:
+					group: 'kind'
+					on_active: root.kind_click(self, self.active, 'calc')
+					allow_no_selection: False
+					active: True
+				Label: 
+					text: 'Calculator'
+
+				CheckBox:
+					group: 'kind'
+					on_active: root.kind_click(self, self.active, 'rect')
+					allow_no_selection: False
+				Label: 
+					text: 'Rectangle'
+
+
+			BoxLayout:
+				orientation: 'vertical'
+				id: controlbox
+
+			BoxLayout:
+				padding: 10
+				spacing: 10
+				orientation: 'horizontal'
+
+				Button:
+					text: 'Clear'
+					on_press: root.clear()
+				
+				Button:
+					text: 'Swap'
+					on_press: root.swap()
+
+				Button:
+					text: 'Calculate'
+					on_press: root.calculate()
